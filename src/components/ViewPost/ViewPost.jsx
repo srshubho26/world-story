@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import CatMapper from '../CatMapper/CatMapper';
 import formatDate from '../../assets/utilities/dateTimeFormatter';
 import { FaFacebookF, FaLinkedinIn, FaTelegramPlane, FaTwitter } from 'react-icons/fa';
@@ -14,15 +14,22 @@ const ViewPost = () => {
     const { loadSingle } = useContext(PostContext);
     const { thumbnail, title, posted_on, details, category, tags } = singleData || {};
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (singleData) return;
         loadSingle(id)
             .then(res => {
-                setSingleData(res.val());
+                const val = res.val();
+                if(!val){
+                    navigate("/home");
+                    return;
+                }
+                setSingleData(val);
                 setLoading(false);
             })
 
-    }, [singleData, loadSingle, id]);
+    }, [singleData, navigate, loadSingle, id]);
 
     useEffect(() => {
         window.scrollTo({ top: 0 });
