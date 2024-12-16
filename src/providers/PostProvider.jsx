@@ -145,10 +145,9 @@ const PostProvider = ({ children }) => {
     }, [categories, sidebarPostLoading]);
 
     //Load single post
-    const loadSingle = async id=>{
+    const loadSingle = id =>{
         const singleRef = ref(database, `posts/${id}`);
-        const snapshot = await get(singleRef);
-        return snapshot;
+        return get(singleRef);
     }
 
     return (<PostContext.Provider
@@ -162,7 +161,7 @@ const PostProvider = ({ children }) => {
 };
 
 PostProvider.propTypes = {
-    children: PropTypes.object
+    children: PropTypes.array
 }
 
 export default PostProvider;

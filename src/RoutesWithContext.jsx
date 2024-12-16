@@ -10,7 +10,6 @@ import Contact from "./components/Contact/Contact";
 import Categories from "./components/Categories/Categories";
 
 const RoutesWithContext = () => {
-    const { loadSingle } = useContext(PostContext);
 
     const router = createBrowserRouter([
         {
@@ -19,7 +18,7 @@ const RoutesWithContext = () => {
             children: [
                 {
                     path: '/',
-                    element: <Navigate to='/home'/>
+                    element: <Navigate to='/home' />
                 },
                 {
                     path: '/home',
@@ -27,22 +26,19 @@ const RoutesWithContext = () => {
                 },
                 {
                     path: '/all-posts',
-                    element: <AllPosts/>
+                    element: <AllPosts />
                 },
                 {
                     path: '/categories',
-                    element: <Categories/>
-                },{
+                    element: <Categories />
+                }, {
                     path: '/contact',
-                    element: <Contact/>
+                    element: <Contact />
                 },
                 {
                     path: '/view/:id',
                     element: <ViewPost />,
-                    loader: async ({ params }) => {
-                        const data = await loadSingle(params.id);
-                        return data;
-                    }
+                    loader: async ({ params }) => loadSingle(params.id)
                 },
                 {
                     path: '/category/:id',
