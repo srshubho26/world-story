@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const BottomNavItem = ({ to = "", name = "", setOpen }) => {
     return (<li className="px-5 font-bold uppercase">
         <NavLink
-            className={({ isActive }) => (isActive ? 'text-prime' : 'text-sec_title dark:text-white hover:text-prime')}
+            className={({ isActive }) => (isActive ? 'text-prime' : 'text-sec_title dark:text-white hover:text-prime dark:hover:text-prime')}
             onClick={() => setOpen(false)}
             to={to}>
             {name}
