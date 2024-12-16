@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "fashion"
+    },
+    {
+        "id": 2,
+        "name": "lifestyle"
+    },
+    {
+        "id": 3,
+        "name": "travel"
+    },
+    {
+        "id": 4,
+        "name": "business"
+    },
+    {
+        "id": 5,
+        "name": "entertainment"
+    },
+    {
+        "id": 6,
+        "name": "food & cuisine"
+    },
+    {
+        "id": 7,
+        "name": "tech"
+    },
+    {
+        "id": 8,
+        "name": "urban"
+    }
+]
