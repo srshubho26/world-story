@@ -1,8 +1,11 @@
-# React + Vite
+<h1>World Story</h1>
+<p>World Story is a blog based website. Here user can browse different blogs based on different categories according to their needs.</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h2>Technologies</h2>
+<ul>
+    <li>React</li>
+    <li>Tailwind</li>
+    <li>Firebase Realtime Database</li>
+</ul>
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h3><a href="https://world-story-9879d.web.app/home">Click Here</a> for live preview.</h3>
