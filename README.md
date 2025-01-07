@@ -44,7 +44,7 @@ World Story is a blog based website. Here user can browse different blogs based 
 - Run `git clone https://github.com/shuvo22890/world-story.git` on your local machine
 - After cloning run `cd world-story`
 - Then run `npm install`
-- Creat an `.env.local` on the root folder of project and paste the following code
+- Creat an `.env.local` file on the root folder of project and paste the following code
 - `VITE_API_KEY=`
 - `VITE_AUTH_DOMAIN=`
 - `VITE_PROJECT_ID=`
