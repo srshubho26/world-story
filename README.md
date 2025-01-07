@@ -45,13 +45,13 @@ World Story is a blog based website. Here user can browse different blogs based 
 - After cloning run `cd world-story`
 - Then run `npm install`
 - Creat an `.env.local` on the root folder of project and paste the following code
-- VITE_API_KEY=
-- VITE_AUTH_DOMAIN=
-- VITE_PROJECT_ID=
-- VITE_STORAGE_BUCKET=
-- VITE_MESSAGING_SENDER_ID=
-- VITE_APP_ID=
-- VITE_DATABASE_URL=
+- `VITE_API_KEY=`
+- `VITE_AUTH_DOMAIN=`
+- `VITE_PROJECT_ID=`
+- `VITE_STORAGE_BUCKET=`
+- `VITE_MESSAGING_SENDER_ID=`
+- `VITE_APP_ID=`
+- `VITE_DATABASE_URL=`
 - Create an firebase project and get the credentials and place them on the env file
 - A `data.json` file is attached on the root of the project. Import the data on your firebase realtime database
 - Finally run `npm run dev`
