@@ -8,7 +8,7 @@ function Root() {
   return (<PostProvider>
     <Header />
 
-    <main className="pt-44 bg-white dark:bg-sec_title md:pt-36">
+    <main className="pt-[65px] bg-white dark:bg-sec_title sm:pt-[92px]">
       <Outlet />
     </main>
 

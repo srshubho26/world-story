@@ -1,24 +1,25 @@
 import { useContext } from "react";
 import Title from "../../Title/Title";
 import { PostContext } from '../../../providers/PostProvider';
-import SidebarPost from '../../Home/homeParts/Interesting/SidebarPost';
+import { Link } from "react-router-dom";
 
 const FooterMiddle = () => {
-    const { sidebarPost, sidebarPostLoading } = useContext(PostContext);
+    const { categories, catLoading } = useContext(PostContext);
 
     return (
         <div>
-            <Title extra="mb-0" title="Popular Post" textColor="text-white" bg="before:bg-white" />
+            <Title title="Categories" textColor="text-white" bg="before:bg-white" />
 
-            {sidebarPostLoading ? <div className='min-h-96 flex justify-center items-center'>
-                <span className="loading loading-spinner text-prime loading-lg"></span>
-            </div> : sidebarPost && sidebarPost.slice(4, 7).map(post => <SidebarPost
-                key={post.id}
-                post={post}
-                titleColor="text-white"
-                dateColor="text-white"
-                border="border-[#454545]"
-            />)}
+            <div className="uppercase text-sm xl:text-base text-white gap-y-5 grid grid-cols-2 gap-5">
+                {catLoading ? <div className='min-h-52 flex justify-center items-center col-span-full'>
+                    <span className="loading loading-spinner text-prime loading-lg"></span>
+                </div> : categories && categories.map(cat => <Link
+                    to={`/category/${cat.id}`}
+                    className="hover:text-prime"
+                    key={cat.id}>
+                    {cat.name}
+                </Link>)}
+            </div>
         </div>
     );
 };

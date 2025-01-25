@@ -10,27 +10,27 @@ const FooterLeft = () => {
         <div>
             <Title title="About us" textColor="text-white" bg="before:bg-white"/>
 
-            <p className='text-desc text-xl normal-case'>We are dedicated to provide quality contents to our viewers based on different category. You will always find quality contents from us to make your life a little easier.</p>
+            <p className='text-desc normal-case'>We are dedicated to provide quality contents to our viewers based on different category. You will always find quality contents from us to make your life a little easier.</p>
 
-            <address className='my-8 text-white text-base'>
-                <div className='flex items-center gap-5'>
-                    <CiLocationOn className='text-prime text-4xl'/>
+            <address className='my-8 text-white text-sm'>
+                <div className='flex items-center gap-3'>
+                    <CiLocationOn className='text-prime text-3xl'/>
                     <div>
                         <p>Monipur, Mirpur-2</p>
                         <p>Dhaka-1216</p>
                     </div>
                 </div>
                 
-                <div className='my-8 flex items-center gap-5'>
-                    <FiPhoneCall className='text-prime text-4xl'/>
+                <div className='my-5 flex items-center gap-3'>
+                    <FiPhoneCall className='text-prime text-3xl'/>
                     <div>
                         <p>+88 01792-314525</p>
                         <p>+88 01722-096866</p>
                     </div>
                 </div>
                 
-                <div className='flex items-center gap-5'>
-                    <PiEnvelope className='text-prime text-4xl'/>
+                <div className='flex items-center gap-3'>
+                    <PiEnvelope className='text-prime text-3xl'/>
                     <div>
                         <p>shuvo22890@gmail.com</p>
                         <p>srs22890@gmail.com</p>

@@ -8,10 +8,10 @@ const BannerLargePost = ({ post }) => {
     const { id, thumbnail, title, posted_on, details, category } = post || {};
 
     return (<div className='relative h-96 sm:h-full border-b-8 border-prime'>
-        <img className='w-full h-full object-cover' src={thumbnail} alt={title} />
+        <img className='w-full h-full object-cover aspect-[3/2]' src={thumbnail} alt={title} />
 
         <div
-            className='absolute bottom-0 py-5 lg:pb-14 left-0 w-full px-3 sm:px-5 lg:pl-14 bg-gradient-to-t from-[#000000] via-[#0e0e0e94] to-transparent'
+            className='absolute bottom-0 pb-5 pt-8 lg:pb-14 left-0 w-full px-3 sm:px-5 lg:pl-14 bg-gradient-to-t from-[#000000] via-[#0e0e0ebc] to-transparent'
         >
             <h1 className='text-white font-bold uppercase text-xl xl:text-3xl'>{title}</h1>
             <div className='my-2 sm:my-4 flex flex-wrap items-center gap-3 sm:gap-6'>
