@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import { ref, query, orderByChild, onValue, limitToFirst, startAt, get, equalTo } from "firebase/database";
-import database from "../firebase/firebase.init";
+import {database} from "../firebase/firebase.init";
 import { toast, ToastContainer } from "react-toastify";
 export const PostContext = createContext('post-context');
 
@@ -154,14 +154,14 @@ const PostProvider = ({ children }) => {
         value={{ setPostStart, postLoading, posts, bannerPosts, categories, setIsDark, catLoading, sidebarPost, sidebarPostLoading, authorAdvPost, loadSingle, setIsHome, shouldShowMore, catPostLoading, catPosts, setCatId, setIsAllPost, allPosts, allPostLoading }}
     >
         <div className={isDark ? 'dark' : ''}>
-            <ToastContainer theme={isDark ? 'dark' : 'light'}/>
+        <ToastContainer position="top-center" theme={isDark ? 'dark' : 'light'} />
             {children}
         </div>
     </PostContext.Provider>);
 };
 
 PostProvider.propTypes = {
-    children: PropTypes.array
+    children: PropTypes.object
 }
 
 export default PostProvider;

@@ -10,6 +10,7 @@ import Contact from './components/Contact/Contact.jsx';
 import ViewPost from './components/ViewPost/ViewPost.jsx';
 import CatPost from './components/CatPost/CatPost.jsx';
 import Error404 from './components/Error404/Error404.jsx';
+import Login from './components/Login/Login.jsx';
 
 const router = createBrowserRouter([
     {
@@ -32,9 +33,14 @@ const router = createBrowserRouter([
             {
                 path: '/categories',
                 element: <Categories />
-            }, {
+            },
+            {
                 path: '/contact',
                 element: <Contact />
+            },
+            {
+                path: '/login',
+                element: <Login />
             },
             {
                 path: '/view/:id',

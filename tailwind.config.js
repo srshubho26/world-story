@@ -20,7 +20,7 @@ export default {
   },
   plugins: [daisyui],
   daisyui: {
-    themes: [],
+    themes: false,
   },
   darkMode: "class"
 }
