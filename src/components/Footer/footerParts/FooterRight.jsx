@@ -1,4 +1,4 @@
-import Title from "../../Title/Title";
+import Title from "../../reusuable/Title";
 
 const FooterRight = () => {
 

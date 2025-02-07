@@ -1,9 +1,9 @@
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.init';
 import { toast } from 'react-toastify';
-import Loading from '../components/Loading/Loading';
+import Loading from '../components/reusuable/Loading';
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
@@ -24,9 +24,23 @@ const AuthProvider = ({ children }) => {
 
     const login = (email, pass) => signInWithEmailAndPassword(auth, email, pass);
 
+    const updateUser = async (displayName, photoURL) => {
+        const updateFields = { displayName, photoURL };
+        await updateProfile(auth.currentUser, updateFields);
+        setUser({ ...auth.currentUser, ...updateFields });
+
+        return auth.currentUser;
+    }
+
+    const register = async (email, pass, name, photoURL = "") => {
+        await createUserWithEmailAndPassword(auth, email, pass);
+        const res = await updateUser(name, photoURL);
+        return res;
+    }
+
     const logout = () => signOut(auth);
 
-    const values = { user, login, logout }
+    const values = { user, login, updateUser, register, logout }
 
     return (<AuthContext.Provider value={values}>
         <Loading loading={loading} />

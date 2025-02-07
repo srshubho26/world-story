@@ -1,4 +1,4 @@
-import Title from "../../Title/Title";
+import Title from "../../reusuable/Title";
 import { CiLocationOn } from "react-icons/ci";
 import { FiPhoneCall } from "react-icons/fi";
 import { PiEnvelope } from "react-icons/pi";

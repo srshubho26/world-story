@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Title from "../../Title/Title";
+import Title from "../../reusuable/Title";
 import { PostContext } from '../../../providers/PostProvider';
 import { Link } from "react-router-dom";
 

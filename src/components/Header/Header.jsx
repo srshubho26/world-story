@@ -6,19 +6,22 @@ import DarkBtn from "./headerParts/DarkBtn";
 import NavItem from "./headerParts/NavItem";
 import { AuthContext } from "../../providers/AuthProvider";
 import userThumb from "../../assets/img/user.png";
+import { FaUserEdit } from "react-icons/fa";
+import { IoLogOut } from "react-icons/io5";
+import { MdPostAdd } from "react-icons/md";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
     const [scrollingDown, setScrollingDown] = useState(false);
     const { setIsDark } = useContext(PostContext);
-    const {user, logout} = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         logout()
-        .then(()=>{
-            navigate("/login");
-        })
+            .then(() => {
+                navigate("/login");
+            })
     }
 
     useEffect(() => {
@@ -29,7 +32,7 @@ const Header = () => {
         }
     }, []);
 
-    return (<header className={`${scrollingDown ? '-top-52' : 'top-0'} border-b border-prime z-10 fixed w-full`}>
+    return (<header className={`${scrollingDown ? '-top-52' : 'top-0'} border-b border-prime z-40 fixed w-full`}>
         <nav className="px-2 py-4 sm:py-7 bg-[#ffffffe9] dark:bg-[#1c0014e9]">
             <div className="relative flex justify-between items-center max-w-screen-xl mx-auto">
                 <div className="flex gap-2 items-center">
@@ -63,23 +66,32 @@ const Header = () => {
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full border border-prime">
                             <img
-                                alt="Tailwind CSS Navbar component"
+                                alt={user?.displayName}
                                 src={user?.photoURL || userThumb} />
                         </div>
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-white border border-prime rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-white dark:bg-post_title border border-prime rounded-box z-[1] mt-3 w-52 p-2 shadow dark:text-white">
                         <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
+                            <Link className="flex items-center gap-2 text-base hover:text-prime" to="/edit-profile">
+                                <FaUserEdit className="text-2xl" />
+                                <span>Edit Profile</span>
+                            </Link>
                         </li>
-                        <li><a>Settings</a></li>
 
                         <li>
-                            <button onClick={handleLogout}>Logout</button>
+                            <Link className="flex items-center gap-2 text-base hover:text-prime" to="/add-post">
+                                <MdPostAdd className="text-2xl" />
+                                <span>Add Post</span>
+                            </Link>
+                        </li>
+
+                        <li>
+                            <button className="flex items-center gap-2 text-base hover:text-prime" onClick={handleLogout}>
+                                <IoLogOut className="text-2xl" />
+                                <span>Logout</span>
+                                </button>
                         </li>
                     </ul>
                 </div> : null}

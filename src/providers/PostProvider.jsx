@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
-import { ref, query, orderByChild, onValue, limitToFirst, startAt, get, equalTo } from "firebase/database";
-import {database} from "../firebase/firebase.init";
+import { ref, query, orderByChild, onValue, limitToFirst, startAt, set, get, equalTo, push } from "firebase/database";
+import { database } from "../firebase/firebase.init";
 import { toast, ToastContainer } from "react-toastify";
 export const PostContext = createContext('post-context');
 
@@ -25,16 +25,25 @@ const PostProvider = ({ children }) => {
     const [catId, setCatId] = useState(null);
     const [shouldShowMore, setShouldShowMore] = useState(true);
 
+    useEffect(() => {
+        // const postListRef = ref(database, 'posts');
+        // const newPostRef = push(postListRef);
+        // set(newPostRef, {
+        //     category: { 1: true, 3: true },
+        //     details: "hello"
+        // });
+    }, []);
+
     //Load posts for the 'All Posts' page
-    useEffect(()=>{
-        if(!shouldShowMore || !isAllPost) return;
+    useEffect(() => {
+        if (!shouldShowMore || !isAllPost) return;
         setAllPostLoading(true);
         const postRef = ref(database, 'posts/');
-        const postQuery = query(postRef, orderByChild('id'), startAt(postStart), limitToFirst(6));
+        const postQuery = query(postRef, orderByChild('posted_on'), startAt(postStart), limitToFirst(6));
 
         onValue(postQuery, snapshot => {
             let val = snapshot.val();
-            if(!val){
+            if (!val) {
                 setAllPostLoading(false);
                 setShouldShowMore(false);
                 toast.warning("All the posts are loaded!");
@@ -57,16 +66,16 @@ const PostProvider = ({ children }) => {
 
 
     // Load posts for a specific category
-    useEffect(()=>{
-        if(!catId)return;
+    useEffect(() => {
+        if (!catId) return;
         setCatPostLoading(true);
         const postRef = ref(database, 'posts/');
-        const catPostQuery = query(postRef, orderByChild('category/'+catId), equalTo(true), limitToFirst(6));
-        
+        const catPostQuery = query(postRef, orderByChild('category/' + catId), equalTo(true), limitToFirst(6));
+
         try {
             onValue(catPostQuery, snapshot => {
                 let val = snapshot.val();
-                if(!val){
+                if (!val) {
                     setCatPostLoading(false);
                     toast.warning("Something went wrong!");
                     return;
@@ -85,26 +94,26 @@ const PostProvider = ({ children }) => {
 
     // Load posts for Latest Post section
     useEffect(() => {
-        if(!isHome) return;
+        if (!isHome) return;
         setPostLoading(true);
         const postRef = ref(database, 'posts/');
-        const postQuery = query(postRef, orderByChild('id'), startAt(0), limitToFirst(6));
+        const postQuery = query(postRef, orderByChild('posted_on'), startAt(0), limitToFirst(6));
 
-            onValue(postQuery, snapshot => {
-                let val = snapshot.val();
-                if(!val){
-                    toast.error("Something went wrong!");
-                }
-                val = Array.isArray(val) ? val : Object.values(val);
-                const getPosts = val.filter(el => el).sort((a, b) => b.id - a.id);
-                setPosts([...getPosts]);
-                const shuffle = [...getPosts].sort(()=>Math.random()-.5);
-                setBannerPosts(shuffle.slice(0, 4));
-                setAuthorAdvPost([...getPosts].sort(()=>Math.random()-.5).slice(0, 3));
-                setPostLoading(false);
+        onValue(postQuery, snapshot => {
+            let val = snapshot.val();
+            if (!val) {
+                toast.error("Something went wrong!");
+            }
+            val = Array.isArray(val) ? val : Object.values(val);
+            const getPosts = val.filter(el => el).sort((a, b) => b.id - a.id);
+            setPosts([...getPosts]);
+            const shuffle = [...getPosts].sort(() => Math.random() - .5);
+            setBannerPosts(shuffle.slice(0, 4));
+            setAuthorAdvPost([...getPosts].sort(() => Math.random() - .5).slice(0, 3));
+            setPostLoading(false);
 
-            });
-            
+        });
+
     }, [isHome]);
 
     // Load posts shown on the sidebar and footer
@@ -112,18 +121,19 @@ const PostProvider = ({ children }) => {
         if (sidebarPost) return;
         setSidebarPostLoading(true);
         const postRef = ref(database, 'posts/');
-        const randomStarting = Math.round(Math.random()*5);
-        const postQuery = query(postRef, orderByChild('id'), startAt(randomStarting), limitToFirst(8));
+        const randomStarting = Math.round(Math.random() * 5);
+        const postQuery = query(postRef, orderByChild('posted_on'), startAt(randomStarting), limitToFirst(8));
         try {
             onValue(postQuery, snapshot => {
                 setSidebarPostLoading(false);
-                const val = snapshot.val();
-                setSidebarPost(val.filter(el=>el));
+                let _val = snapshot.val();
+                const val = Array.isArray(_val) ? _val : Object.values(_val);
+
+                setSidebarPost(val.filter(el => el));
             })
         } catch (err) {
             setSidebarPostLoading(false);
-            console.log(err.message);
-            toast.error("Something went wrong! Please check your internet connection and reload the page.");
+            toast.error("Something went wrong! Note: "+err.message);
         }
     }, [sidebarPost]);
 
@@ -132,7 +142,7 @@ const PostProvider = ({ children }) => {
         if (categories || sidebarPostLoading) return;
         setCatLoading(true);
         const catRef = ref(database, 'categories/');
-        try{
+        try {
             onValue(catRef, catSnap => {
                 setCategories(catSnap.val());
                 setCatLoading(false);
@@ -145,7 +155,7 @@ const PostProvider = ({ children }) => {
     }, [categories, sidebarPostLoading]);
 
     //Load single post
-    const loadSingle = id =>{
+    const loadSingle = id => {
         const singleRef = ref(database, `posts/${id}`);
         return get(singleRef);
     }
@@ -154,7 +164,7 @@ const PostProvider = ({ children }) => {
         value={{ setPostStart, postLoading, posts, bannerPosts, categories, setIsDark, catLoading, sidebarPost, sidebarPostLoading, authorAdvPost, loadSingle, setIsHome, shouldShowMore, catPostLoading, catPosts, setCatId, setIsAllPost, allPosts, allPostLoading }}
     >
         <div className={isDark ? 'dark' : ''}>
-        <ToastContainer position="top-center" theme={isDark ? 'dark' : 'light'} />
+            <ToastContainer position="top-center" theme={isDark ? 'dark' : 'light'} />
             {children}
         </div>
     </PostContext.Provider>);

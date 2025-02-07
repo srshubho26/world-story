@@ -3,14 +3,18 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Root from './Root.jsx';
-import Home from './components/Home/Home.jsx';
-import AllPosts from './components/AllPosts/AllPosts.jsx';
-import Categories from './components/Categories/Categories.jsx';
-import Contact from './components/Contact/Contact.jsx';
-import ViewPost from './components/ViewPost/ViewPost.jsx';
-import CatPost from './components/CatPost/CatPost.jsx';
-import Error404 from './components/Error404/Error404.jsx';
-import Login from './components/Login/Login.jsx';
+import Error404 from './pages/Error404/Error404.jsx';
+import Home from './pages/Home/Home.jsx';
+import AllPosts from './pages/AllPosts/AllPosts.jsx';
+import Categories from './pages/Categories/Categories.jsx';
+import Contact from './pages/Contact/Contact.jsx';
+import Login from './pages/Login/Login.jsx';
+import ViewPost from './pages/ViewPost/ViewPost.jsx';
+import CatPost from './pages/CatPost/CatPost.jsx';
+import Register from './pages/Register/Register.jsx';
+import PrivateRoute from './components/reusuable/PrivateRoute.jsx';
+import EditProfile from './pages/EditProfile/EditProfile.jsx';
+import AddPost from './pages/AddPost/AddPost.jsx';
 
 const router = createBrowserRouter([
     {
@@ -43,12 +47,24 @@ const router = createBrowserRouter([
                 element: <Login />
             },
             {
+                path: '/register',
+                element: <Register />
+            },
+            {
                 path: '/view/:id',
                 element: <ViewPost />
             },
             {
                 path: '/category/:id',
                 element: <CatPost />
+            },
+            {
+                path: '/edit-profile',
+                element: <PrivateRoute><EditProfile /></PrivateRoute>
+            },
+            {
+                path: '/add-post',
+                element: <PrivateRoute><AddPost /></PrivateRoute>
             }
         ]
     }
