@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Title from "../../components/reusuable/Title"
 import { AuthContext } from "../../providers/AuthProvider";
 import ImgUpload from "../../components/reusuable/ImgUpload";
@@ -11,6 +11,10 @@ import { Helmet } from "react-helmet-async";
 const EditProfile = () => {
     const { user, updateUser } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, []);
 
     const handleSubmit = async e => {
         e.preventDefault();
