@@ -5,6 +5,7 @@ import formatDate from '../../assets/utilities/dateTimeFormatter';
 import { FaFacebookF, FaLinkedinIn, FaTelegramPlane, FaTwitter } from 'react-icons/fa';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import { PostContext } from '../../providers/PostProvider';
+import { Helmet } from 'react-helmet-async';
 
 const ViewPost = () => {
     const detailsRef = useRef();
@@ -21,7 +22,7 @@ const ViewPost = () => {
         loadSingle(id)
             .then(res => {
                 const val = res.val();
-                if(!val){
+                if (!val) {
                     navigate("/home");
                     return;
                 }
@@ -42,6 +43,10 @@ const ViewPost = () => {
     }, [details]);
 
     return (<section className='pb-20 mt-12 md:mt-10 max-w-screen-xl mx-auto px-2'>
+        <Helmet>
+            <title>{singleData ? singleData.title : "View Blog"} - World Story</title>
+        </Helmet>
+
         <img src={thumbnail} className='w-full max-h-[calc(100vh-220px)] object-cover aspect-[3/2] rounded-md' />
         <div className='pt-5 mb-10'>
             {loading ? <div className='justify-center h-[calc(100vh-200px)] flex items-center'>

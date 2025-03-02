@@ -32,6 +32,7 @@ WorldStory is a blog based website. Here user can browse different blogs based o
 - react-toastify: ^10.0.6
 - sort-by: ^1.2.0
 - sweetalert: ^2.1.2
+- react-helmet-async: ^2.0.5
 
 ## DevDependencies:
 - @eslint/js: ^9.13.0

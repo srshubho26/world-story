@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { PostContext } from "../../providers/PostProvider";
 import Title from "../../components/reusuable/Title";
 import PostCard from "../../components/reusuable/PostCard";
+import { Helmet } from "react-helmet-async";
 
 const CatPost = () => {
     const { categories, catPostLoading, catPosts, setCatId } = useContext(PostContext);
@@ -25,6 +26,10 @@ const CatPost = () => {
 
 
     return (<section className="max-w-screen-xl mx-auto py-20 px-2 xl:px-0">
+        <Helmet>
+            <title>{`Posts For '${catName}' Category`} - World Story</title>
+        </Helmet>
+
         {catPostLoading ? <div className='justify-center h-96 flex items-center'>
             <span className="loading loading-spinner text-prime loading-lg"></span>
         </div> : catPosts && catPosts.length && <>

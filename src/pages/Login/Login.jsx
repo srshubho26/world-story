@@ -5,6 +5,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/reusuable/Loading";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { login, user } = useContext(AuthContext);
@@ -38,6 +39,10 @@ const Login = () => {
     }
 
     return (<section className="pb-10 px-2">
+        <Helmet>
+            <title>Login - World Story</title>
+        </Helmet>
+
         <div className="max-w-screen-xl mx-auto">
             <div className="flex flex-col-reverse md:flex-row justify-between items-center">
                 <form onSubmit={handleSubmit} className={(loading ? 'p-3' : 'p-0') + " card-body w-full max-w-md relative"}>

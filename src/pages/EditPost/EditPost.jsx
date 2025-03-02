@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Loading from "../../components/reusuable/Loading";
 import { uploadImg } from "../../assets/utilities/uploadImg";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const EditPost = () => {
     const { id } = useParams();
@@ -57,6 +58,10 @@ const EditPost = () => {
     }, []);
 
     return (<section className='max-w-screen-lg mx-auto py-16 px-2 xl:px-0'>
+        <Helmet>
+            <title>Edit Blog - World Story</title>
+        </Helmet>
+
         <Title title="Edit your post" />
 
         <div className="relative w-full min-h-96">

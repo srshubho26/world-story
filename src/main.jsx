@@ -17,6 +17,7 @@ import AddPost from './pages/AddPost/AddPost.jsx';
 import MyPosts from './pages/MyPosts/MyPosts.jsx';
 import EditPost from './pages/EditPost/EditPost.jsx';
 import AboutUs from './pages/AboutUs/AboutUs.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
     {
@@ -82,6 +83,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
+        <HelmetProvider>
         <RouterProvider router={router} />
+        </HelmetProvider>
     </StrictMode>,
 )

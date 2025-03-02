@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Title from "../../components/reusuable/Title";
 import about from "../../assets/img/about.svg";
+import { Helmet } from "react-helmet-async";
 
 const AboutUs = () => {
     useEffect(() => {
@@ -9,6 +10,9 @@ const AboutUs = () => {
 
     return (<section className='pb-28 mt-12 max-w-screen-md lg:max-w-screen-xl mx-auto px-2'>
         <Title title="About Us" />
+        <Helmet>
+            <title>About Us - World Story</title>
+        </Helmet>
 
         <div className="flex flex-col-reverse lg:flex-row lg:gap-5 items-center">
             <div className="dark:text-white text-justify">

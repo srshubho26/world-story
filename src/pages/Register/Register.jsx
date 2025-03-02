@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Title from "../../components/reusuable/Title";
 import ImgUpload from "../../components/reusuable/ImgUpload";
 import { uploadImg } from "../../assets/utilities/uploadImg";
+import { Helmet } from "react-helmet-async";
 const Register = () => {
     const { register, user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -60,6 +61,10 @@ const Register = () => {
     }
 
     return (<section className="py-10 px-2">
+        <Helmet>
+            <title>Register - World Story</title>
+        </Helmet>
+
         <div className="max-w-screen-xl mx-auto">
             <div className="flex flex-col-reverse md:flex-row justify-between items-center">
                 <form onSubmit={handleSubmit} className={(loading ? 'p-3' : 'p-0') + " card-body w-full max-w-md relative"}>

@@ -8,6 +8,7 @@ import CatMapper from "../../components/CatMapper/CatMapper";
 import { Link } from "react-router-dom";
 import Loading from "../../components/reusuable/Loading";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 const MyPosts = () => {
   const { loadUserPosts, deletePost } = useContext(PostContext);
@@ -67,6 +68,10 @@ const MyPosts = () => {
   }
 
   return (<section className='max-w-screen-xl mx-auto py-16 px-2 xl:px-0'>
+    <Helmet>
+      <title>My Blogs - World Story</title>
+    </Helmet>
+
     <Title title="My Posts" />
 
     <div className="overflow-x-auto rounded-box flex flex-col border border-desc relative min-h-80">

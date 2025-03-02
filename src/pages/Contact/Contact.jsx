@@ -3,6 +3,7 @@ import Title from "../../components/reusuable/Title";
 import { BsSendFill } from "react-icons/bs";
 import { useEffect } from "react";
 import contact from "../../assets/img/contact.svg";
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
     const handleSend = e => {
@@ -16,6 +17,10 @@ const Contact = () => {
     }, [])
 
     return (<section className="py-16 max-w-screen-md lg:max-w-screen-xl mx-auto px-2">
+        <Helmet>
+            <title>Contact Us - World Story</title>
+        </Helmet>
+
         <Title title="Contact us" />
 
         <div className="flex flex-col-reverse lg:flex-row gap-5 items-center">

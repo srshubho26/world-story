@@ -22,7 +22,8 @@
     "react-router-dom": "^6.27.0",
     "react-toastify": "^10.0.6",
     "sort-by": "^1.2.0",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "react-helmet-async": "^2.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

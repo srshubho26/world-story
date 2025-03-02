@@ -4,6 +4,7 @@ import { PostContext } from "../../providers/PostProvider";
 import { uploadImg } from "../../assets/utilities/uploadImg";
 import PostForm from "../../components/reusuable/PostForm";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const AddPost = () => {
@@ -30,6 +31,9 @@ const AddPost = () => {
 
     return (<section className='max-w-screen-lg mx-auto py-16 px-2 xl:px-0'>
         <Title title="add new post" />
+        <Helmet>
+            <title>Add New Post - World Story</title>
+        </Helmet>
 
         <PostForm serverActionOnSubmit={addPostAction} />
     </section>);
