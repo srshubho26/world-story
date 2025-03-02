@@ -6,7 +6,6 @@ import Root from './Root.jsx';
 import Error404 from './pages/Error404/Error404.jsx';
 import Home from './pages/Home/Home.jsx';
 import AllPosts from './pages/AllPosts/AllPosts.jsx';
-import Categories from './pages/Categories/Categories.jsx';
 import Contact from './pages/Contact/Contact.jsx';
 import Login from './pages/Login/Login.jsx';
 import ViewPost from './pages/ViewPost/ViewPost.jsx';
@@ -15,6 +14,9 @@ import Register from './pages/Register/Register.jsx';
 import PrivateRoute from './components/reusuable/PrivateRoute.jsx';
 import EditProfile from './pages/EditProfile/EditProfile.jsx';
 import AddPost from './pages/AddPost/AddPost.jsx';
+import MyPosts from './pages/MyPosts/MyPosts.jsx';
+import EditPost from './pages/EditPost/EditPost.jsx';
+import AboutUs from './pages/AboutUs/AboutUs.jsx';
 
 const router = createBrowserRouter([
     {
@@ -35,8 +37,8 @@ const router = createBrowserRouter([
                 element: <AllPosts />
             },
             {
-                path: '/categories',
-                element: <Categories />
+                path: '/about',
+                element: <AboutUs />
             },
             {
                 path: '/contact',
@@ -65,6 +67,14 @@ const router = createBrowserRouter([
             {
                 path: '/add-post',
                 element: <PrivateRoute><AddPost /></PrivateRoute>
+            },
+            {
+                path: '/edit/:id',
+                element: <PrivateRoute><EditPost /></PrivateRoute>
+            },
+            {
+                path: '/my-posts',
+                element: <PrivateRoute><MyPosts /></PrivateRoute>
             }
         ]
     }

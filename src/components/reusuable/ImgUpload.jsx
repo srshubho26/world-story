@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 import { MdDelete } from 'react-icons/md';
 
-const ImgUpload = ({ required = false, label="Profile Pic" }) => {
+const ImgUpload = ({ required = false, label="Profile Pic", maxWidth="", defaultPrevImg=null }) => {
     const imgInputRef = useRef();
-    const [prevImg, setPrevImg] = useState(null);
+    const [prevImg, setPrevImg] = useState(defaultPrevImg);
 
     const handlePrevImg = img => {
         const reader = new FileReader();
@@ -13,7 +13,7 @@ const ImgUpload = ({ required = false, label="Profile Pic" }) => {
     }
 
     return (<>
-        <div className={(prevImg ? "" : "hidden") + " aspect-square max-w-56 border rounded-md p-1 relative"}>
+        <div className={(prevImg ? "" : "hidden ") + (maxWidth ? maxWidth : " aspect-square max-w-56") + " border rounded-md p-1 relative"}>
             <button
                 className='absolute right-0 top-0 text-red-500 flex justify-center items-center w-full h-full bg-[#1c001476] rounded-md text-4xl opacity-0 hover:opacity-100'
                 type="button"
@@ -46,8 +46,10 @@ const ImgUpload = ({ required = false, label="Profile Pic" }) => {
 ImgUpload.propTypes = {
     prevImg: PropTypes.string,
     label: PropTypes.string,
+    maxWidth: PropTypes.string,
     setPrevImg: PropTypes.func,
-    required: PropTypes.bool
+    required: PropTypes.bool,
+    defaultPrevImg: PropTypes.string
 };
 
 export default ImgUpload;

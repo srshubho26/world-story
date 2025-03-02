@@ -15,7 +15,7 @@ const Banner = ({posts, loading}) => {
                 </div>
 
                 <div className='basis-1/3 h-full max-h-screen lg:max-h-[calc(100vh-150px)] grid grid-rows-3 sm:grid-rows-1 sm:grid-cols-3 lg:grid-cols-1 lg:grid-rows-3'>
-                    {smallPosts && smallPosts.map(post=><BannerSmallPost key={post.id} post={post}/>)}
+                    {smallPosts && smallPosts.map(post=><BannerSmallPost key={post.posted_on} post={post}/>)}
                 </div>
             </div>}
         </section>

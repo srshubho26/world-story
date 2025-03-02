@@ -1,18 +1,26 @@
-# World Story
+![World Story](https://github.com/srshubho26/srshubho26/blob/main/worldStory.png?raw=true)
 
-World Story is a blog based website. Here user can browse different blogs based on different categories according to their needs. This website is built using react and firebase realtime database.
+# WorldStory
+
+WorldStory is a blog based website. Here user can browse different blogs based on different categories according to their needs. This website is built using react and firebase realtime database.
 
 ## Technologies:
 - React
 - Tailwind
+- Firebase
 - Firebase Realtime Database
 
 ## Features
 - Browse different blogs
 - Pagination for blogs
 - Filter blogs by categories
+- Users can update their own profile
+- Users can publish their own blog
+- Users can update and delete their own blogs
 
 ## Dependencies: 
+- @tinymce/tinymce-react: ^5.1.1
+- axios: ^1.7.9
 - firebase: ^11.0.1
 - localforage: ^1.10.0
 - match-sorter: ^7.0.0
@@ -23,6 +31,7 @@ World Story is a blog based website. Here user can browse different blogs based 
 - react-router-dom: ^6.27.0
 - react-toastify: ^10.0.6
 - sort-by: ^1.2.0
+- sweetalert: ^2.1.2
 
 ## DevDependencies:
 - @eslint/js: ^9.13.0

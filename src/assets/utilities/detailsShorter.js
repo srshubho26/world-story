@@ -1,6 +1,6 @@
 export const detailsShorter = (str='', limit=130) => {
     let shortStr = str.slice(0, limit);
-    const toRemove = ['<br>', '<strong>', '</strong>', '<ul>', '</ul>', '<li>', '</li>', '<ol>', '</ol>', '<hr>'];
+    const toRemove = ['<p>','</p>','<br>', '<strong>', '</strong>', '<ul>', '</ul>', '<li>', '</li>', '<ol>', '</ol>', '<hr>'];
 
     let i=0;
     while(true){

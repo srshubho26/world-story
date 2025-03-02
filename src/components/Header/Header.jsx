@@ -9,6 +9,7 @@ import userThumb from "../../assets/img/user.png";
 import { FaUserEdit } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";
 import { MdPostAdd } from "react-icons/md";
+import { TiThList } from "react-icons/ti";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
@@ -56,7 +57,7 @@ const Header = () => {
                     <ul className="flex-col lg:flex-row gap-5 flex justify-center">
                         <NavItem setOpen={setOpen} to="/home" name="Home" />
                         <NavItem setOpen={setOpen} to="/all-posts" name="Posts" />
-                        <NavItem setOpen={setOpen} to="/categories" name="Categories" />
+                        <NavItem setOpen={setOpen} to="/about" name="About Us" />
                         <NavItem setOpen={setOpen} to="/contact" name="Contact" />
                         {user ? null : <NavItem setOpen={setOpen} to="/login" name="Login" />}
                     </ul>
@@ -84,6 +85,13 @@ const Header = () => {
                             <Link className="flex items-center gap-2 text-base hover:text-prime" to="/add-post">
                                 <MdPostAdd className="text-2xl" />
                                 <span>Add Post</span>
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link className="flex items-center gap-2 text-base hover:text-prime" to="/my-posts">
+                                <TiThList className="text-2xl" />
+                                <span>My Posts</span>
                             </Link>
                         </li>
 

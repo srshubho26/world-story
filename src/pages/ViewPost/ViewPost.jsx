@@ -41,21 +41,21 @@ const ViewPost = () => {
         }
     }, [details]);
 
-    return (<section className='pb-20 mt-12 md:mt-10 max-w-screen-lg mx-auto px-2'>
-        <img src={thumbnail} className='max-w-full max-h-screen rounded-md' />
+    return (<section className='pb-20 mt-12 md:mt-10 max-w-screen-xl mx-auto px-2'>
+        <img src={thumbnail} className='w-full max-h-[calc(100vh-220px)] object-cover aspect-[3/2] rounded-md' />
         <div className='pt-5 mb-10'>
             {loading ? <div className='justify-center h-[calc(100vh-200px)] flex items-center'>
                 <span className="loading loading-spinner text-prime loading-lg"></span>
             </div> : <>
                 <h2 className='text-post_title dark:text-secondary text-2xl sm:text-4xl font-bold'>{title}</h2>
 
-                <div className='my-2 sm:my-4 flex items-center gap-3 sm:gap-6'>
+                <div className='my-2 sm:my-4 flex flex-wrap items-center gap-3 sm:gap-6'>
                     <CatMapper ids={{ ...category }} />
 
                     <span className='text-sec_title text-sm sm:text-base uppercase'>{formatDate(posted_on)}</span>
                 </div>
 
-                <p ref={detailsRef} className='text-post_title dark:text-desc text-lg mt-10'></p>
+                <div ref={detailsRef} className='text-post_title text-justify dark:text-desc text-lg mt-10'></div>
 
                 <div className='my-10 sm:flex items-center text-sec_title dark:text-white text-xl gap-x-5'>
                     <strong>Tags: </strong>
